@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+
+# Virtual environments
+.env/
+.venv/
+venv/
+ENV/
+env/
+build/
+develop-eggs/
+.eggs/
+*.egg-info/
+dist/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data
+data/bronze/
+data/silver/
+data/gold/
+
+# VS Code
+.vscode/
