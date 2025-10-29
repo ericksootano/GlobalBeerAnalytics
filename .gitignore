@@ -21,10 +21,10 @@ dist/
 # Jupyter
 .ipynb_checkpoints/
 
-# Data
-data/bronze/
-data/silver/
-data/gold/
-
+# Ignorar datasets crudos
+data/*
+# Mantener solo lo final (gold)
+!data/gold/
+!data/gold/plots/
 # VS Code
 .vscode/

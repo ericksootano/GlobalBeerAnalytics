@@ -166,7 +166,8 @@ notebooks/
 ## 🎥 Visualización interactiva
 
 > **Explora la animación interactiva de la relación entre PIB per cápita y consumo de alcohol:**
-> 🎮 [Abrir visualización (HTML)](data\gold\plots\pib_vs_consumo.html)
+> 🎮 [🌍 Ver visualización interactiva en GitHub Pages](https://ericksootano.github.io/GlobalBeerAnalytics/data/gold/plots/pib_vs_consumo.html)
+
 
 
 
