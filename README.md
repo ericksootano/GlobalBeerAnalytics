@@ -29,27 +29,54 @@ cubriendo más de 200 países a lo largo de 60 años de historia.
 
 ---
 
-## 🧱 Arquitectura del Proyecto – Modelo Medallion
+## 📊 Hallazgos y Visualizaciones Clave
 
-```
-Datos Crudos (OWID, Banco Mundial)
-        ↓
-🥑 Bronce → Archivos CSV crudos (cerveza, destilados, total)
-        ↓
-🥈 Plata  → Datos limpios, normalizados y enriquecidos (PIB, regiones, niveles de ingreso)
-        ↓
-🥇 Oro    → Tablas analíticas y visualizaciones interactivas
-```
+Este conjunto de visualizaciones muestra la evolución del consumo de alcohol per cápita, su relación con el PIB, los niveles de ingreso y las regiones globales durante el periodo 1960–2020.
 
-### 🧩 Tecnologías utilizadas
+### 🧭 1. Relación PIB vs. Consumo (Animación Interactiva)
 
-| Capa              | Herramientas / Librerías       | Descripción                                                            |
-| ----------------- | ------------------------------ | ---------------------------------------------------------------------- |
-| 🥑 Bronce         | `requests`, `pandas`, `json`   | Descarga y almacenamiento de datos desde OWID y APIs del Banco Mundial |
-| 🥈 Plata          | `polars`, `pyarrow`            | Limpieza, normalización y control de calidad de los datos              |
-| 🥇 Oro            | `plotly.express`, `matplotlib` | Análisis visual e interactividad                                       |
-| 🧮 Utilidades     | `python-dotenv`, `glob`, `os`  | Automatización y manejo de archivos                                    |
-| ☁️ Almacenamiento | Archivos Parquet locales       | Almacenamiento columnar optimizado para análisis                       |
+Esta es la visualización principal del proyecto, que anima la correlación entre la riqueza de un país (PIB per cápita) y su consumo de alcohol a lo largo de 60 años.
+
+> 🎮 [**Ver visualización interactiva en GitHub Pages**](https://ericksootano.github.io/GlobalBeerAnalytics/data/gold/plots/pib_vs_consumo.html)
+> 
+> * **Hallazgo Clave (Relación PIB–Consumo):** Existe una clara **correlación positiva** entre el desarrollo económico y el consumo. A medida que el PIB per cápita de un país aumenta, también lo hace su consumo de alcohol, hasta que factores culturales, religiosos o de salud pública moderan esta relación.
+
+---
+
+### 📈 Visualizaciones Estáticas y sus Hallazgos
+
+Las siguientes gráficas (archivos `.png` estáticos) descomponen las tendencias observadas en la animación principal.
+
+#### 2. Consumo Promedio Global por Tipo de Bebida
+![Consumo Global](./images/previews/consumo_global.png)
+
+* **Hallazgo (Tendencia Global):** El consumo global de alcohol mostró un **incremento sostenido desde 1960 hasta cerca del año 2000**. A partir de las últimas dos décadas, esta tendencia tiende a estabilizarse a nivel mundial.
+
+#### 3. Consumo por Grupo de Ingresos
+![Consumo por Ingreso](./images/previews/consumo_por_ingreso.png)
+
+* **Hallazgo (Grupos de Ingreso):** Los **países de altos ingresos** presentan, con diferencia, el mayor consumo per cápita. Paralelamente, los países de ingresos medios y bajos muestran un crecimiento más gradual pero constante, sugiriendo una convergencia a medida que se desarrollan.
+
+#### 4. Consumo Promedio por Región
+![Consumo por Región](./images/previews/consumo_por_region.png)
+
+* **Hallazgo (Regiones):** **Europa y Norteamérica** dominan históricamente el consumo global de alcohol. Sin embargo, regiones como Asia y África, aunque con niveles base más bajos, muestran un aumento progresivo con una alta variabilidad entre países.
+
+#### 5. Top 10 Países con Mayor Consumo (2020)
+![Top 10 Países](./images/previews/top10_paises.png)
+
+* **Hallazgo (Ranking):** Para el año 2020, el ranking de los 10 principales países consumidores está **dominado casi en su totalidad por naciones europeas**, reflejando patrones culturales de consumo profundamente arraigados.
+
+---
+
+### 🧠 Conclusiones Generales del Análisis
+
+El análisis de 60 años de datos evidencia una relación clara entre el desarrollo económico y los patrones de consumo de alcohol:
+
+* **El desarrollo impulsa el consumo:** Los países de altos ingresos lideran el consumo, mientras que los de ingresos bajos y medios crecen gradualmente, en paralelo con su PIB.
+* **Estabilización reciente:** A nivel global, el consumo promedio parece haberse estabilizado desde el año 2000, aunque las tendencias regionales varían.
+* **Liderazgo regional:** Europa y América del Norte siguen siendo las regiones con mayor consumo per cápita.
+* **Influencia cultural:** Aunque el PIB es un fuerte predictor, la correlación no es perfecta, lo que demuestra que factores culturales, religiosos y políticos (como se ve en el Top 10) siguen siendo determinantes clave en el comportamiento del consumo.
 
 ---
 
@@ -58,7 +85,7 @@ Datos Crudos (OWID, Banco Mundial)
 ### 1️⃣ Clonar el repositorio
 
 ```bash
-git clone https://github.com/ericksootano/GlobalBeerAnalytics.git
+git clone [https://github.com/ericksootano/GlobalBeerAnalytics.git](https://github.com/ericksootano/GlobalBeerAnalytics.git)
 cd GlobalBeerAnalytics
 ```
 
@@ -77,15 +104,37 @@ pip install -r requirements.txt
 
 ### 4️⃣ Ejecutar el pipeline ETL
 
-Ejecutar los notebooks en orden:
+Ejecutar notebook:
 
 ```
 notebooks/
- ├── 01_Bronze_Ingesta_Datos.ipynb
- ├── 02_Silver_Limpieza_y_Calidad.ipynb
- ├── 03_Silver_Enriquecimiento.ipynb
- └── 04_Gold_Analisis_y_Visualizacion.ipynb
+ ├── GlobalBeerAnalytics_ETL.ipynb
+
 ```
+
+---
+
+## 🧱 Arquitectura del Proyecto – Modelo Medallion
+
+```
+Datos Crudos (OWID, Banco Mundial)
+        ↓
+🥑 Bronce → Archivos CSV crudos (cerveza, destilados, total)
+        ↓
+🥈 Plata  → Datos limpios, normalizados y enriquecidos (PIB, regiones, niveles de ingreso)
+        ↓
+🥇 Oro    → Tablas analíticas y visualizaciones interactivas
+```
+
+### 🧩 Tecnologías utilizadas
+
+| Capa              | Herramientas / Librerías       | Descripción                                                            |
+| ----------------- | ------------------------------ | ---------------------------------------------------------------------- |
+| 🥉 Bronce         | `requests`, `pandas`, `json`   | Descarga y almacenamiento de datos desde OWID y APIs del Banco Mundial |
+| 🥈 Plata          | `polars`, `pyarrow`            | Limpieza, normalización y control de calidad de los datos              |
+| 🥇 Oro            | `plotly.express`, `matplotlib` | Análisis visual e interactividad                                       |
+| 🧮 Utilidades     | `python-dotenv`, `glob`, `os`  | Automatización y manejo de archivos                                    |
+| ☁️ Almacenamiento | Archivos Parquet locales       | Almacenamiento columnar optimizado para análisis                       |
 
 ---
 
@@ -100,76 +149,17 @@ notebooks/
 
 * Limpieza, normalización y auditoría de calidad con **Polars**.
 * Creación del log de calidad `data_quality_log.parquet` con:
-
-  * Total de registros, nulos eliminados, valores negativos corregidos y porcentaje de calidad.
+    * Total de registros, nulos eliminados, valores negativos corregidos y porcentaje de calidad.
 * Enriquecimiento con **PIB per cápita** y **clasificación por región e ingreso del Banco Mundial**.
 
 ### 🥇 Capa Oro
 
 * Generación de tablas analíticas en `/data/gold/`.
 * Creación de visualizaciones interactivas con **Plotly**:
-
-  * Tendencias globales por tipo de bebida.
-  * Consumo promedio por región y grupo de ingreso.
-  * Top 10 países con mayor consumo.
-  * **Gráfico animado (PIB vs consumo de alcohol, 1960–2020)**.
-
----
-
-## 📊 Principales hallazgos
-
-### 🌍 Tendencia global
-
-* Las bebidas alcohólicas muestran un aumento sostenido entre 1960 y 2000.
-* A partir de 2010, la tendencia global tiende a estabilizarse.
-
-### 💰 Grupos de ingreso
-
-* Los países de **altos ingresos** presentan el mayor consumo per cápita.
-* Los grupos de ingresos medios y bajos mantienen un crecimiento leve.
-
-### 🌐 Regiones
-
-* **Europa y Norteamérica** dominan el consumo global.
-* **Asia y África** muestran crecimiento, aunque con alta variabilidad.
-
-### ⚖️ Relación PIB–Consumo
-
-* Existe una **correlación positiva** entre el desarrollo económico y el consumo de alcohol.
-* Sin embargo, factores culturales y religiosos afectan esta relación en ciertas regiones.
-
-### 📈 Anomalías y observaciones
-
-* Se detectaron valores negativos (por redondeo) corregidos en la capa Plata.
-* Algunos países clasificados como *“Not classified”* carecen de datos completos del Banco Mundial.
-
----
-
-## 🧠 Conclusiones
-
-1. Se construyó exitosamente un pipeline **ETL modular, trazable y reproducible** usando Python y Polars.
-2. La **arquitectura Medallion** permite segmentar el ciclo de vida de los datos de forma clara.
-3. La combinación de **indicadores económicos y de consumo** ofrece perspectivas sociales valiosas.
-4. Se logra **data storytelling** mediante visualizaciones interactivas y dinámicas.
-
----
-
-## 🧳 Limitaciones y próximos pasos
-
-* Falta de información completa para algunos países y años.
-* Posible integración futura con **Databricks** o **Power BI** para análisis a gran escala.
-* Automatización del pipeline con **Airflow** o **Prefect**.
-* Implementar pruebas unitarias y CI/CD para validación continua.
-
----
-
-## 🎥 Visualización interactiva
-
-> **Explora la animación interactiva de la relación entre PIB per cápita y consumo de alcohol:**
-> 🎮 [🌍 Ver visualización interactiva en GitHub Pages](https://ericksootano.github.io/GlobalBeerAnalytics/data/gold/plots/pib_vs_consumo.html)
-
-
-
+    * Tendencias globales por tipo de bebida.
+    * Consumo promedio por región y grupo de ingreso.
+    * Top 10 países con mayor consumo.
+    * **Gráfico animado (PIB vs consumo de alcohol, 1960–2020)**.
 
 ---
 
@@ -183,10 +173,18 @@ GlobalBeerAnalytics/
 │   ├── silver/                  # Datos limpios y enriquecidos
 │   └── gold/                    # Resultados analíticos y gráficos
 │
+├── images/
+│   ├── previews/                # Imágenes de gráficos generados
+│   │   ├── consumo_global.png
+│   │   ├── consumo_por_ingreso.png
+│   │   ├── consumo_por_region.png
+│   │   ├── pib_vs_consumo.png
+│   │   └── top10_paises.png
+│   └── etl_medallion_architecture_diagram.svg # Diagrama de arquitectura
+│
 ├── notebooks/
 │   └── GlobalBeerAnalytics_ETL.ipynb
 │
-├── data/gold/plots/pib_vs_consumo.html
 ├── requirements.txt
 ├── README.md
 └── .gitignore
@@ -223,11 +221,10 @@ GlobalBeerAnalytics/
 
 * **Clave natural recomendada:** `iso_code`, `year`, `beverage_type` (garantiza unicidad por país‑año‑tipo).
 * **Reglas de calidad aplicadas (Capa Plata):**
-
-  * Eliminación de nulos en `litres_per_capita`.
-  * Corrección de valores negativos en `litres_per_capita` → `0`.
-  * Deduplicación por `country`, `iso_code`, `year`, `beverage_type`.
-  * Bitácora en `data/silver/data_quality_log.parquet` con métricas por dataset.
+    * Eliminación de nulos en `litres_per_capita`.
+    * Corrección de valores negativos en `litres_per_capita` → `0`.
+    * Deduplicación por `country`, `iso_code`, `year`, `beverage_type`.
+    * Bitácora en `data/silver/data_quality_log.parquet` con métricas por dataset.
 
 ### Sugerencia de DDL (si exportas a SQL)
 
@@ -248,6 +245,15 @@ CREATE TABLE dbo.AlcoholConsumptionEnriched (
 ```
 
 > 📦 **Notas de particionado (Parquet):** para consultas rápidas en motores analíticos, puedes particionar por `year` o por `region`, según el patrón de acceso.
+
+---
+
+## 🧳 Limitaciones y próximos pasos
+
+* Falta de información completa para algunos países y años.
+* Posible integración futura con **Databricks** o **Power BI** para análisis a gran escala.
+* Automatización del pipeline con **Airflow** o **Prefect**.
+* Implementar pruebas unitarias y CI/CD para validación continua.
 
 ---
 
@@ -291,7 +297,7 @@ pandas==2.2.3
 ## 🩶 Licencia
 
 Este proyecto se distribuye bajo la **licencia MIT**.
-Eres libre de usarlo, modificarlo y compartirlo con fines educativos o de portafolio.
+Eres libre de usarlo, modificarlo y compartirlo con fines educativos o de portofolio.
 
 ---
 
