@@ -1,7 +1,11 @@
 # 🍺 Global Beer Analytics – Proyecto ETL y Visualización de Datos
 
 <p align="center">
+<<<<<<< HEAD
   <img src="./images/etl_medallion_architecture_diagram.svg" alt="Diagrama ETL con arquitectura Medallion" width="90%">
+=======
+  <img src="./images/etl_medallion_architecture_diagram.svg" alt="Diagrama ETL con arquitectura Medallion" width="100%">
+>>>>>>> 8970240 (Resolviendo conflicto de merge)
 </p>
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
@@ -166,7 +170,9 @@ notebooks/
 ## 🎥 Visualización interactiva
 
 > **Explora la animación interactiva de la relación entre PIB per cápita y consumo de alcohol:**
-> 🎮 [Abrir visualización (HTML)](data/gold/plots/pib_vs_consumo.html)
+> 🎮 [Abrir visualización (HTML)](data\gold\plots\pib_vs_consumo.html)
+
+
 
 ---
 
@@ -281,7 +287,7 @@ pandas==2.2.3
 **Erickson Otaño Sánchez**
 *Ingeniero de Datos | Desarrollador ETL | Analista de Información*
 📍 Cervecería Nacional Dominicana (AB InBev)
-🔗 [LinkedIn](https://www.linkedin.com/in/ericksootano)
+🔗 [LinkedIn](https://www.linkedin.com/in/erickson-otaño/)
 
 ---
 
