@@ -1,11 +1,7 @@
 # 🍺 Global Beer Analytics – Proyecto ETL y Visualización de Datos
 
 <p align="center">
-<<<<<<< HEAD
-  <img src="./images/etl_medallion_architecture_diagram.svg" alt="Diagrama ETL con arquitectura Medallion" width="90%">
-=======
   <img src="./images/etl_medallion_architecture_diagram.svg" alt="Diagrama ETL con arquitectura Medallion" width="100%">
->>>>>>> 8970240 (Resolviendo conflicto de merge)
 </p>
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
