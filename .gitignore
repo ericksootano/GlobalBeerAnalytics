@@ -17,7 +17,7 @@ develop-eggs/
 .eggs/
 *.egg-info/
 dist/
-
+.DS_Store
 # Jupyter
 .ipynb_checkpoints/
 
